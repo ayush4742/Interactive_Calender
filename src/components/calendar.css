@@ -73,6 +73,15 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.toggle {
+  font-size: 18px;
+  cursor: pointer;
+  color: #2563eb;
+  font-weight: 600;
 }
 
 .notes h3 {
@@ -127,6 +136,7 @@
 
 .calendar-grid {
   width: 100%;
+  margin-top: 10px;
   animation: fadeSlide 0.35s ease;
 }
 
@@ -251,6 +261,16 @@
   font-weight: 600;
 }
 
+/* Notes Collapse */
+
+.notes-content {
+  display: block;
+}
+
+.toggle {
+  font-size: 18px;
+  cursor: pointer;
+}
 
 /* Mobile Responsive Fix */
 
@@ -272,11 +292,34 @@
   }
 
   .notes {
-    max-width: 100%;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .notes-content {
+    display: none;
+  }
+
+  .notes-header {
+    cursor: pointer;
+    padding: 6px 0;
+  }
+
+  .toggle {
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  .calendar-grid {
+    margin-top: 10px;
+  }
+
+  .notes.open .notes-content {
+    display: block;
   }
 
   .notes textarea {
-    height: 120px;
+    height: 100px;
   }
 
   .calendar-header {

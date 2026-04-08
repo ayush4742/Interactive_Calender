@@ -6,6 +6,7 @@ const NotesSection = () => {
   });
 
   const [status, setStatus] = useState("Saved");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setStatus("Saving...");
@@ -19,22 +20,24 @@ const NotesSection = () => {
   }, [notes]);
 
   return (
-    <div className="notes">
-      <div className="notes-header">
+    <div className={`notes ${open ? "open" : ""}`}>
+      <div className="notes-header" onClick={() => setOpen(!open)}>
         <h3>Monthly Notes</h3>
-        <span className={`save-status ${status === "Saved" ? "saved" : ""}`}>
-          {status}
-        </span>
+        <span className="toggle">{open ? "−" : "+"}</span>
       </div>
 
-      <textarea
-        placeholder="Write notes for this month..."
-        value={notes}
-        onChange={(e) => setNotes(e.target.value)}
-      />
+      <div className="notes-content">
+        <span className="save-status">{status}</span>
 
-      <div className="notes-footer">
-        <span>{notes.length} characters</span>
+        <textarea
+          placeholder="Write notes for this month..."
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        />
+
+        <div className="notes-footer">
+          {notes.length} characters
+        </div>
       </div>
     </div>
   );
