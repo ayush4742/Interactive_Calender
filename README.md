@@ -1,16 +1,230 @@
-# React + Vite
+# 📅 Interactive Wall Calendar 
+## Frontend Engineering Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**React + Vite** • Date Range Selection • Notes System • Responsive Layout
 
-Currently, two official plugins are available:
+*Polished UI showcasing Frontend Excellence, Clean Architecture & UX Design*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🎯 Assignment Objective
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project demonstrates:
+- Frontend Architecture Design
+- UI Engineering Excellence  
+- Interactive Components
+- Responsive Design
+- Clean Code Structure
+- User Experience Focus
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Live Demo
+
+| 🔗 Live Project | 🔗 GitHub Repo |
+|-----------------|----------------|
+| [Vercel Link] | [ayush4742/Interactive_Calender](https://github.com/ayush4742/Interactive_Calender) |
+
+---
+
+## ✨ Core Features
+
+| Feature | Description |
+|---------|-------------|
+| 📅 **Interactive Calendar** | Monthly navigation, smooth transitions, today's date highlight, keyboard nav |
+| 🎯 **Date Range Selection** | Select start/end dates, highlight date range visually |
+| 📝 **Notes System** | Monthly/date-based notes, auto-save, save indicator, character counter |
+| 💾 **Local Storage** | Persistent notes (`calendar-note-YYYY-MM-DD`) |
+| 📱 **Responsive Design** | Desktop: side-by-side, Mobile: stacked, touch-friendly |
+| ⌨️ **Keyboard Navigation** | Arrow keys, Escape clear |
+| 🖼️ **Hero Images** | Monthly hero images |
+| 🎨 **Clean UI** | Minimal design, wall calendar feel |
+
+---
+
+## 🎯 Date Range States
+
+| State | Description | Visual |
+|-------|-------------|--------|
+| **Start Date** | Range beginning | 🟢 Green |
+| **End Date** | Range ending | 🔴 Red |
+| **Range** | Selected dates | 🔵 Blue fill |
+| **Today** | Current day | 🟡 Yellow |
+
+---
+
+## 📝 Notes Features
+
+- Monthly & date-specific notes
+- Auto-save to localStorage
+- Save status indicator
+- Character counter
+- Key: `calendar-note-2024-09-15`
+
+---
+
+## 📱 Responsive Layouts
+
+**Desktop:** Side-by-side calendar + notes, hero image top  
+**Mobile:** Stacked layout, optimized touch spacing
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| ← Arrow Left | Previous Month |
+| → Arrow Right | Next Month |
+| Escape | Clear Selection |
+
+---
+
+## 🧠 Bonus Features
+
+✔ **Date-Based Notes**  
+✔ **Keyboard Navigation**  
+✔ **Range Selection**  
+✔ **Responsive Layout**  
+✔ **Smooth UI Transitions**  
+✔ **Local Storage**  
+✔ **Hero Images per Month**  
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **React** | UI Framework |
+| **Vite** | Build Tool |
+| **CSS** | Custom Styling |
+| **date-fns** | Date Handling |
+| **LocalStorage** | Data Persistence |
+
+---
+
+## 🏗️ Architecture Flow
+App
+↓ Calendar
+↓ CalendarGrid
+↓ DateCell
+↓ NotesSection
+
+text
+
+---
+
+## 📁 Project Structure
+src/
+│
+├── components/
+│ ├── Calendar.jsx
+│ ├── CalendarGrid.jsx
+│ ├── DateCell.jsx
+│ ├── HeroImage.jsx
+│ └── NotesSection.jsx
+│
+├── hooks/
+│ └── useCalendar.js
+│
+├── styles/
+│ ├── calendar.css
+│ └── App.css
+│
+├── assets/
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
+text
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone Repo
+```bash
+git clone https://github.com/ayush4742/Interactive_Calender.git
+cd Interactive_Calender
+```
+
+### 2️⃣ Install
+```bash
+npm install
+```
+
+### 3️⃣ Run
+```bash
+npm run dev
+```
+**URL:** `http://localhost:5173`
+
+---
+
+## 🎨 UI Design Goals
+
+- **Clean Layout** - Minimal UI elements
+- **Wall Calendar Feel** - Hero images, spacious design
+- **Smooth Interactions** - Transitions & hover states
+- **Professional Polish** - Production-ready
+
+---
+
+## 📈 Code Quality
+
+✅ **Component-Based Architecture**  
+✅ **Clean Folder Structure**  
+✅ **Reusable Components**  
+✅ **Minimal Dependencies**  
+✅ **Production Standards**
+
+---
+
+## 📊 What It Demonstrates
+
+- **Frontend Architecture**
+- **UI Engineering** 
+- **Responsive Design**
+- **Clean Code Practices**
+- **UX Thinking**
+
+---
+
+## 🚀 Future Improvements
+
+- 🎉 Drag & Drop Events
+- ☁️ Backend Integration
+- 🌙 Dark Mode
+- 📱 PWA Support
+- 📊 Analytics
+
+---
+
+## 👨‍💻 Author
+
+**Ayush Kumar**  
+🌐 [GitHub](https://github.com/ayush4742)  
+📍 Bengaluru, India
+
+---
+
+## ⭐ Final Result
+
+**Production-Ready Interactive Wall Calendar**
+✔ Clean Architecture
+✔ Fully Responsive
+✔ Smooth Interactions
+✔ Professional UI
+✔ Scalable Design
+✔ No Backend Needed
+
+text
+
+---
+
+## 🏁 Thank You
+
+Thank you for reviewing!  
+**Feedback welcome 🚀**
