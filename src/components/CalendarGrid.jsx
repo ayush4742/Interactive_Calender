@@ -13,7 +13,7 @@ import {
   subMonths
 } from "date-fns";
 
-const CalendarGrid = ({ currentDate, setCurrentDate }) => {
+const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -29,6 +29,8 @@ const CalendarGrid = ({ currentDate, setCurrentDate }) => {
   const blanks = Array.from({ length: startDay });
 
   const handleDateClick = (day) => {
+    setSelectedDate(day);
+
     if (!startDate) {
       setStartDate(day);
       return;
@@ -50,6 +52,7 @@ const CalendarGrid = ({ currentDate, setCurrentDate }) => {
   const clearSelection = () => {
     setStartDate(null);
     setEndDate(null);
+    setSelectedDate(null);
   };
 
   const isInRange = (day) => {
@@ -105,6 +108,7 @@ const CalendarGrid = ({ currentDate, setCurrentDate }) => {
         </div>
       )}
 
+      {/* Weekdays */}
       <div className="weekdays">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
           <div key={day} className="weekday">
@@ -113,6 +117,7 @@ const CalendarGrid = ({ currentDate, setCurrentDate }) => {
         ))}
       </div>
 
+      {/* Days */}
       <div className="days">
         {blanks.map((_, index) => (
           <div key={index}></div>

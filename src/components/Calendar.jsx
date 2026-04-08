@@ -6,16 +6,19 @@ import "./calendar.css";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
     <div className="calendar-container">
       <HeroImage currentDate={currentDate} />
 
       <div className="bottom-section">
-        <NotesSection />
+        <NotesSection selectedDate={selectedDate} />
+
         <CalendarGrid 
           currentDate={currentDate}
           setCurrentDate={setCurrentDate}
+          setSelectedDate={setSelectedDate}
         />
       </div>
     </div>
