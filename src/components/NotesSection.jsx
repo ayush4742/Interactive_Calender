@@ -4,42 +4,51 @@ import { format } from "date-fns";
 const NotesSection = ({ selectedDate }) => {
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState("Saved");
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
-  const key = selectedDate
+  // Generate storage key
+  const storageKey = selectedDate
     ? `calendar-note-${format(selectedDate, "yyyy-MM-dd")}`
     : "calendar-note-default";
 
-  // Load notes when date changes
+  // Header label
+  const title = selectedDate
+    ? `Notes - ${format(selectedDate, "MMM d")}`
+    : "Monthly Notes";
+
+  // Toggle notes panel
+  const toggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  // Load notes
   useEffect(() => {
-    const saved = localStorage.getItem(key) || "";
-    setNotes(saved);
-  }, [key]);
+    const savedNotes = localStorage.getItem(storageKey) || "";
+    setNotes(savedNotes);
+  }, [storageKey]);
 
   // Save notes
   useEffect(() => {
     setStatus("Saving...");
 
     const timer = setTimeout(() => {
-      localStorage.setItem(key, notes);
+      localStorage.setItem(storageKey, notes);
       setStatus("Saved");
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [notes, key]);
+  }, [notes, storageKey]);
 
   return (
-    <div className={`notes ${open ? "open" : ""}`}>
-      <div className="notes-header" onClick={() => setOpen(!open)}>
-        <h3>
-          {selectedDate
-            ? `Notes - ${format(selectedDate, "MMM d")}`
-            : "Monthly Notes"}
-        </h3>
-
-        <span className="toggle">{open ? "−" : "+"}</span>
+    <div className={`notes ${isOpen ? "open" : ""}`}>
+      
+      {/* Header */}
+      <div className="notes-header" onClick={toggleOpen}>
+        <h3>{title}</h3>
+        <span className="toggle">{isOpen ? "−" : "+"}</span>
       </div>
 
+      {/* Content */}
       <div className="notes-content">
         <span className="save-status">{status}</span>
 
@@ -53,6 +62,7 @@ const NotesSection = ({ selectedDate }) => {
           {notes.length} characters
         </div>
       </div>
+
     </div>
   );
 };

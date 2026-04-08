@@ -1,26 +1,70 @@
-/* Main Container */
+/* =========================
+   Background
+========================= */
 
-.calendar-container {
-  max-width: 900px;
-  margin: 40px auto;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border-radius: 12px;
-  overflow: hidden;
+body {
+  background: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-/* Hero Image */
+/* =========================
+   Container
+========================= */
+
+.calendar-container {
+  max-width: 850px;
+  max-height: 95vh;
+  margin: 60px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.calendar-container::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 8px;
+  background: rgba(0,0,0,0.15);
+  filter: blur(6px);
+  border-radius: 50%;
+}
+
+
+/* =========================
+   Hero Image
+========================= */
 
 .hero-image {
   position: relative;
-  height: 300px;
+  height: clamp(180px, 28vh, 240px);
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,0,0,0.25)
+  );
 }
 
 .month-label {
@@ -34,169 +78,201 @@
 .month-label h2 {
   margin: 0;
   font-size: 24px;
-  letter-spacing: 3px;
-  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .month-label p {
   margin: 0;
   font-size: 13px;
-  opacity: 0.9;
 }
 
 
-/* Bottom Section */
+/* =========================
+   Layout
+========================= */
 
 .bottom-section {
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: 30px;
   padding: 20px;
-  align-items: start;
+  gap: 24px;
+  background: #f8fafc;
 }
 
 
-/* Notes Section */
+/* =========================
+   Notes
+========================= */
 
 .notes {
-  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
 }
 
-.notes h3 {
-  margin-bottom: 12px;
-  color: #374151;
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.toggle {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.save-status {
+  font-size: 12px;
+  color: #9ca3af;
 }
 
 .notes textarea {
   width: 100%;
-  height: 180px;
+  height: 140px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   padding: 12px;
-  font-size: 14px;
   resize: none;
   outline: none;
-  background: #f9fafb;
+  background: #f8fafc;
+  color: #1f2937;
+  font-family: inherit;
+  box-sizing: border-box;   
+}
+
+.notes textarea::placeholder {
+  color: #9ca3af;
+}
+
+.notes-footer {
+  text-align: right;
+  font-size: 12px;
+  color: #9ca3af;
 }
 
 
-/* Calendar Grid */
+/* =========================
+   Calendar
+========================= */
 
 .calendar-grid {
   width: 100%;
 }
 
+.calendar-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  margin-bottom: 12px;
+}
 
-/* Weekdays */
+.calendar-header button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.calendar-header h3 {
+  text-align: center;
+  margin: 0;
+}
+
+
+/* =========================
+   Weekdays
+========================= */
 
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: 10px;
   font-weight: 600;
-  color: #6b7280;
+  margin-bottom: 8px;
   text-align: center;
 }
 
-.weekday {
-  padding: 8px 0;
-}
 
-
-/* Days */
+/* =========================
+   Days
+========================= */
 
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .day {
-  background: #ffffff;
-  padding: 14px;
-  border-radius: 10px;
-  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 500;
   border: 1px solid #e5e7eb;
+  text-align: center;
 }
 
 .day:hover {
   background: #2563eb;
   color: white;
-  transform: translateY(-2px);
 }
 
 
-/* Range Selection */
+/* =========================
+   Range
+========================= */
 
 .day.start,
 .day.end {
   background: #2563eb;
   color: white;
-  font-weight: 600;
 }
 
 .day.range {
   background: #dbeafe;
-  color: #1e40af;
+}
+
+.day.today {
+  border: 2px solid #2563eb;
 }
 
 
-/* Mobile Responsive Fix */
+/* =========================
+   Animation
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   Responsive
+========================= */
 
 @media (max-width: 768px) {
 
   .calendar-container {
     margin: 10px;
-    border-radius: 12px;
-  }
-
-  .hero-image {
-    height: 180px;
   }
 
   .bottom-section {
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 16px;
-  }
-
-  .notes {
-    max-width: 100%;
-  }
-
-  .notes textarea {
-    height: 120px;
-  }
-
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .calendar-header h3 {
-    font-size: 18px;
   }
 
   .day {
     padding: 10px;
-    font-size: 14px;
   }
 
-  .days {
-    gap: 6px;
+  .notes textarea {
+    height: 100px;
   }
 
-  .weekdays {
-    font-size: 12px;
-  }
-
-  .notes-footer {
-    text-align: right;
-    font-size: 11px;
-  }
 }

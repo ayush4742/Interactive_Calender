@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { isToday } from "date-fns";
 import {
   startOfMonth,
   endOfMonth,
@@ -10,24 +9,24 @@ import {
   isAfter,
   isBefore,
   addMonths,
-  subMonths
+  subMonths,
+  isToday
 } from "date-fns";
 
 const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  // Generate month days
   const start = startOfMonth(currentDate);
   const end = endOfMonth(currentDate);
+  const days = eachDayOfInterval({ start, end });
 
-  const days = eachDayOfInterval({
-    start,
-    end
-  });
-
+  // Blank spaces before first day
   const startDay = getDay(start);
   const blanks = Array.from({ length: startDay });
 
+  // Handle date click
   const handleDateClick = (day) => {
     setSelectedDate(day);
 
@@ -36,12 +35,8 @@ const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
       return;
     }
 
-    if (!endDate) {
-      if (isAfter(day, startDate)) {
-        setEndDate(day);
-      } else {
-        setStartDate(day);
-      }
+    if (!endDate && isAfter(day, startDate)) {
+      setEndDate(day);
       return;
     }
 
@@ -49,18 +44,21 @@ const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
     setEndDate(null);
   };
 
+  // Clear selection
   const clearSelection = () => {
     setStartDate(null);
     setEndDate(null);
     setSelectedDate(null);
   };
 
-  const isInRange = (day) => {
-    if (!startDate || !endDate) return false;
-    return isAfter(day, startDate) && isBefore(day, endDate);
-  };
+  // Check range
+  const isInRange = (day) =>
+    startDate &&
+    endDate &&
+    isAfter(day, startDate) &&
+    isBefore(day, endDate);
 
-  /* Keyboard Navigation */
+  // Keyboard navigation
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "ArrowRight") {
@@ -77,10 +75,7 @@ const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
     };
 
     window.addEventListener("keydown", handleKey);
-
-    return () => {
-      window.removeEventListener("keydown", handleKey);
-    };
+    return () => window.removeEventListener("keydown", handleKey);
   }, [currentDate]);
 
   return (
@@ -124,20 +119,20 @@ const CalendarGrid = ({ currentDate, setCurrentDate, setSelectedDate }) => {
         ))}
 
         {days.map((day) => {
-          const isStart = startDate && isSameDay(day, startDate);
-          const isEnd = endDate && isSameDay(day, endDate);
-          const inRange = isInRange(day);
-          const today = isToday(day);
+          const classes = [
+            "day",
+            startDate && isSameDay(day, startDate) && "start",
+            endDate && isSameDay(day, endDate) && "end",
+            isInRange(day) && "range",
+            isToday(day) && "today"
+          ]
+            .filter(Boolean)
+            .join(" ");
 
           return (
             <div
-              key={day.toString()}
-              className={`day 
-                ${isStart ? "start" : ""} 
-                ${isEnd ? "end" : ""} 
-                ${inRange ? "range" : ""} 
-                ${today ? "today" : ""}
-              `}
+              key={day}
+              className={classes}
               onClick={() => handleDateClick(day)}
             >
               {format(day, "d")}
