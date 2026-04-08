@@ -252,14 +252,59 @@
 }
 
 
-/* Responsive */
+/* Mobile Responsive Fix */
 
 @media (max-width: 768px) {
-  .bottom-section {
-    grid-template-columns: 1fr;
+
+  .calendar-container {
+    margin: 10px;
+    border-radius: 12px;
   }
 
   .hero-image {
-    height: 220px;
+    height: 180px;
+  }
+
+  .bottom-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .notes {
+    max-width: 100%;
+  }
+
+  .notes textarea {
+    height: 120px;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .calendar-header h3 {
+    font-size: 18px;
+  }
+
+  .day {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .days {
+    gap: 6px;
+  }
+
+  .weekdays {
+    font-size: 12px;
+  }
+
+  .notes-footer {
+    text-align: right;
+    font-size: 11px;
   }
 }
