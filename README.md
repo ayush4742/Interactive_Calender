@@ -23,7 +23,7 @@ This project demonstrates:
 
 | 🔗 Live Project | 🔗 GitHub Repo |
 |-----------------|----------------|
-| [Vercel Link] | [ayush4742/Interactive_Calender](https://github.com/ayush4742/Interactive_Calender) |
+| [Vercel Link] | [ayush4742/Interactive_Calender]([https://github.com/ayush4742/Interactive_Calender](https://interactive-wall-calendar-nine.vercel.app/)) |
 
 ---
 
@@ -47,7 +47,7 @@ This project demonstrates:
 | State | Description | Visual |
 |-------|-------------|--------|
 | **Start Date** | Range beginning | 🟢 Green |
-| **End Date** | Range ending | 🔴 Red |
+| **End Date** | Range ending | 🟢 Green |
 | **Range** | Selected dates | 🔵 Blue fill |
 | **Today** | Current day | 🟡 Yellow |
 
