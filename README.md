@@ -23,7 +23,7 @@ This project demonstrates:
 
 | 🔗 Live Project | 🔗 GitHub Repo |
 |-----------------|----------------|
-| [Vercel Link] | [ayush4742/Interactive_Calender]([https://github.com/ayush4742/Interactive_Calender](https://interactive-wall-calendar-nine.vercel.app/)) |
+| [Live Demo](https://interactive-wall-calendar-nine.vercel.app/) | [ayush4742/Interactive_Calender](https://github.com/ayush4742/Interactive_Calender) |
 
 ---
 
@@ -111,11 +111,13 @@ App
 ↓ DateCell
 ↓ NotesSection
 
-text
+
 
 ---
 
 ## 📁 Project Structure
+
+```
 src/
 │
 ├── components/
@@ -137,8 +139,8 @@ src/
 ├── App.jsx
 ├── main.jsx
 └── index.css
+---
 
-text
 
 ---
 
